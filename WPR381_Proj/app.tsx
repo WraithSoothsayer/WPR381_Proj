@@ -3,7 +3,7 @@ declare var require: any
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-
+//let weatherData = require("./server");
 
 //Title
 class Title extends React.Component {

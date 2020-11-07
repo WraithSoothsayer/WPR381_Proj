@@ -13,17 +13,6 @@ app.set('port', process.env.PORT || 1337);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/process", (req, res) => {
-    state = {
-        maxTemp: undefined,
-        minTemp: undefined,
-        temperature: undefined,
-        city: undefined,
-        country: undefined,
-        humidity: undefined,
-        description: undefined,
-        error: undefined
-    }
-
     if (req.body.city && req.body.country) {
         console.log(data);
 
@@ -50,7 +39,7 @@ app.post("/process", (req, res) => {
             error: "Please enter values into both fields"
         });
     }
-    res.render("index.html", { data: state });
+    console.log("Data sent");
 })
 
 app.listen(app.get('port'), function () {
