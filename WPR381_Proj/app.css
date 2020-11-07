@@ -2,24 +2,20 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 
-* {
-    box-sizing: border-box;
-}
-
 body {
     font-family: "Open Sans", serif;
 }
 
 .wrapper {
     background-color: #a8d9f9;
-    height: 110vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .main {
-    height: 100vh;
+    height: 85vh;
     box-shadow: 0px 10px 20px #98caef;
     background-image: url("clouds.png");
     background-position: center;
@@ -113,13 +109,13 @@ button {
     font-size: 20px;
 }
 
-option{
+option {
     color: black;
 }
 
-    button:active {
-        outline: none;
-    }
+button:active {
+    outline: none;
+}
 
 .weather__info {
     width: 60%;
