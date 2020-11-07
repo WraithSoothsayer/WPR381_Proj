@@ -1,3 +1,6 @@
 C:\Users\jarlc\Desktop\WPR381\Web Work\WPR381_Proj\WPR381_Proj\obj\Debug\WPR381_Proj.njsproj.CoreCompileInputs.cache
 C:\Users\jarlc\Desktop\WPR381\Web Work\WPR381_Proj\WPR381_Proj\bin\Microsoft.NodejsTools.WebRole.dll
 C:\Users\jarlc\Desktop\WPR381\Web Work\WPR381_Proj\WPR381_Proj\obj\Debug\WPR381_Proj.njsprojAssemblyReference.cache
+C:\Users\vanhe\Source\Repos\WPR381_Proj\WPR381_Proj\obj\Debug\WPR381_Proj.njsprojAssemblyReference.cache
+C:\Users\vanhe\Source\Repos\WPR381_Proj\WPR381_Proj\obj\Debug\WPR381_Proj.njsproj.CoreCompileInputs.cache
+C:\Users\vanhe\Source\Repos\WPR381_Proj\WPR381_Proj\bin\Microsoft.NodejsTools.WebRole.dll

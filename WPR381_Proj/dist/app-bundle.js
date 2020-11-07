@@ -151,13 +151,16 @@ class Form extends React.Component {
         return (React.createElement("form", { onSubmit: this.props.getWeather },
             React.createElement("input", { type: "text", name: "city", placeholder: "City..." }),
             React.createElement("input", { type: "text", name: "country", placeholder: "Country..." }),
+            React.createElement("select", { name: "unitType", id: "metric" },
+                React.createElement("option", { value: "metric" }, "Metric"),
+                React.createElement("option", { value: "imperial" }, "Imperial")),
             React.createElement("button", null, "Get weather")));
     }
 }
 ;
 class CSSClass extends React.Component {
     render() {
-        return (React.createElement("link", { rel: "stylesheet", href: "app.css" }));
+        return (React.createElement("link", { rel: "stylesheet", href: "app.css", type: "text/css" }));
     }
 }
 ;
@@ -178,7 +181,8 @@ class App extends React.Component {
                 e.preventDefault();
                 const city = e.target.elements.city.value;
                 const country = e.target.elements.country.value;
-                const api_call = yield fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
+                const unit = e.target.elements.unitType.value;
+                const api_call = yield fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=${unit}`);
                 const data = yield api_call.json();
                 if (city && country) {
                     console.log(data);

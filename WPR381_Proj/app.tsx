@@ -61,6 +61,10 @@ class Form extends React.Component {
             <form onSubmit={this.props.getWeather}>
                 <input type="text" name="city" placeholder="City..."></input>
                 <input type="text" name="country" placeholder="Country..."></input>
+                <select name="unitType" id="metric">
+                    <option value="metric">Metric</option>
+                    <option value="imperial">Imperial</option>
+                </select>
                 <button>Get weather</button>
             </form>
         );
@@ -70,7 +74,7 @@ class Form extends React.Component {
 class CSSClass extends React.Component {
     render() {
         return (
-            <link rel="stylesheet" href="app.css" />
+            <link rel="stylesheet" href="app.css" type="text/css"/>
             );
     }
 };
@@ -92,8 +96,9 @@ class App extends React.Component {
         e.preventDefault();
         const city = e.target.elements.city.value;
         const country = e.target.elements.country.value;
+        const unit = e.target.elements.unitType.value;
 
-        const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
+        const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=${unit}`);
         const data = await api_call.json();
         
         if (city && country) {
