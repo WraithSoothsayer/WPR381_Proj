@@ -7,7 +7,7 @@ body {
 }
 
 .wrapper {
-    background: linear-gradient(to right, #e67e22, #e74c3c);
+    background-color: #a8d9f9;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -15,17 +15,18 @@ body {
 }
 
 .main {
-    height: 90vh;
-    background: #fff;
-    box-shadow: 0px 13px 40px -13px rgba(0,0,0,0.75);
-    width: 80%;
+    height: 81vh;
+    box-shadow: 0px 10px 20px #98caef;
+    background-image: url("clouds.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 74%;
     margin: 0 auto;
 }
 
 .title-container {
-    height: 90vh;
-    background: url("img/bg.jpg") center center no-repeat;
-    background-size: cover;
+    height: 20vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,32 +37,30 @@ body {
 .title-container__title {
     font-size: 50px;
     letter-spacing: 2px;
-    line-height: 1.3;
-    font-family: 'Roboto Slab', serif;
+    line-height: 1;
+    font-family: 'Merriweather', serif;
 }
 
 .title-container__subtitle {
     font-style: italic;
     font-weight: 100;
     letter-spacing: 1px;
-    line-height: 1.5;
+    line-height: 1;
     font-family: "Merriweather", serif;
 }
 
 .form-container {
-    background-color: #2c3e50;
-    height: 90vh;
-    padding-top: 100px;
+    padding-top: 2%;
     padding-left: 50px;
 }
 
 input[type="text"] {
     background-color: transparent;
     border: 0;
-    border-bottom: solid 1px #f16051;
+    border-bottom: solid 1px #50acef;
     width: 30%;
     padding-bottom: 4px;
-    color: #fff !important;
+    color: #000 !important;
     font-weight: lighter;
     letter-spacing: 2px;
     margin-bottom: 30px;
@@ -87,7 +86,7 @@ button {
     letter-spacing: 1px;
     font-size: 15px;
     cursor: pointer;
-    background-color: #f16051;
+    background-color: #50acef;
     color: #fff;
     font-weight: 100;
 }
@@ -99,15 +98,15 @@ button {
 #metric {
     background-color: transparent;
     border: 0;
-    border-bottom: solid 1px #f16051;
+    border-bottom: solid 1px #50acef;
     width: 10%;
     padding-bottom: 4px;
-    color: #fff !important;
+    color: #000 !important;
     font-weight: lighter;
     letter-spacing: 2px;
     margin-bottom: 30px;
     margin-right: 20px;
-    font-size: 20px;    
+    font-size: 20px;
 }
 
 option{
@@ -126,8 +125,7 @@ option{
 }
 
 .weather__key {
-    color: #f16051;
-    border-bottom: solid 2px rgba(255,255,255,0.06);
+    color: #3799e0;
     padding: 20px 0 20px 0;
     font-weight: 400;
 }
@@ -137,12 +135,12 @@ option{
     }
 
 .weather__value {
-    color: #fff;
+    color: #000;
     font-weight: 200;
 }
 
 .weather__error {
-    color: #f16051;
+    color: #50acef;
     font-size: 20px;
     letter-spacing: 1px;
     font-weight: 200;
