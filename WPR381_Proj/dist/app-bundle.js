@@ -116,12 +116,11 @@ class Title extends React.Component {
 ;
 let unit = "";
 let sign = "";
-//if (unit == "Metric") {
-//    sign = "C";
-//}
-//else {
-//    sign = "F";
-//}
+//let ThunderStormIcon = require( './weather icons/01W.svg');
+//let RainIcon = require( './weather icons/02W.svg');
+//let SnowIcon = require( './weather icons/03W.svg');
+//let ClearIcon = require( './weather icons/04W-DAY.svg');
+//let CloudsIcon = require( './weather icons/05W.svg');
 //Weather
 class Weather extends React.Component {
     render() {
@@ -198,6 +197,7 @@ class App extends React.Component {
             country: undefined,
             humidity: undefined,
             description: undefined,
+            //weatherIcon: '',
             error: undefined
         };
         this.getWeather = function (e) {
@@ -208,8 +208,20 @@ class App extends React.Component {
                 unit = e.target.elements.unitType.value;
                 const api_call = yield fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=${unit}`);
                 const data = yield api_call.json();
+                // let weatherId = data.data.weather[0].id;
                 if (city && country) {
                     console.log(data);
+                    //if (weatherId <= 232) {
+                    //    this.setState({ weatherIcon: ThunderStormIcon })
+                    //} else if (weatherId >= 300 && weatherId <= 531) {
+                    //    this.setState({ weatherIcon: RainIcon });
+                    //} else if (weatherId >= 600 && weatherId <= 622) {
+                    //    this.setState({ weatherIcon: SnowIcon });
+                    //} else if (weatherId === 800) {
+                    //    this.setState({ weatherIcon: ClearIcon });
+                    //} else if (weatherId >= 801 && weatherId <= 804) {
+                    //    this.setState({ weatherIcon: CloudsIcon });
+                    //}
                     this.setState({
                         maxTemp: data.main.temp_max,
                         minTemp: data.main.temp_min,
@@ -230,6 +242,7 @@ class App extends React.Component {
                         country: undefined,
                         humidity: undefined,
                         description: undefined,
+                        //  weatherIcon: '',
                         error: "Please enter values into both fields"
                     });
                 }
@@ -247,7 +260,9 @@ class App extends React.Component {
                                 React.createElement(Title, null)),
                             React.createElement("div", { className: "col-xs-7 form-container" },
                                 React.createElement(Form, { getWeather: this.getWeather.bind(this) }),
-                                React.createElement(Weather, { maxTemp: this.state.maxTemp, minTemp: this.state.minTemp, temperature: this.state.temperature, city: this.state.city, country: this.state.country, humidity: this.state.humidity, description: this.state.description, error: this.state.error }))))))));
+                                React.createElement(Weather, { maxTemp: this.state.maxTemp, minTemp: this.state.minTemp, temperature: this.state.temperature, city: this.state.city, country: this.state.country, humidity: this.state.humidity, description: this.state.description, 
+                                    // weatherIcon={this.state.weatherIcon}
+                                    error: this.state.error }))))))));
     }
 }
 ;

@@ -3,6 +3,7 @@ declare var require: any
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+
 //let weatherData = require("./server");
 
 //Title
@@ -20,12 +21,15 @@ class Title extends React.Component {
 let unit = "";
 let sign = "";
 
-//if (unit == "Metric") {
-//    sign = "C";
-//}
-//else {
-//    sign = "F";
-//}
+
+
+
+//let ThunderStormIcon = require( './weather icons/01W.svg');
+//let RainIcon = require( './weather icons/02W.svg');
+//let SnowIcon = require( './weather icons/03W.svg');
+//let ClearIcon = require( './weather icons/04W-DAY.svg');
+//let CloudsIcon = require( './weather icons/05W.svg');
+
 
 //Weather
 class Weather extends React.Component {
@@ -67,6 +71,7 @@ class Weather extends React.Component {
                     <span className="weather__value"> {this.props.description}</span>
                     </p>
                 }
+     
 
                 {
                     this.props.error && <p className="weather__error"> {this.props.error}</p>
@@ -76,8 +81,11 @@ class Weather extends React.Component {
     }
 };
 
+
+
 //Form
-class Form extends React.Component {
+class Form extends React.Component
+{
     render() {
         return (
             <form onSubmit={this.props.getWeather}>
@@ -103,7 +111,8 @@ class CSSClass extends React.Component {
 
 const API_KEY = '39a9c9e10d07c63dde01d21bbeca07c0';
 
-class App extends React.Component {
+class App extends React.Component
+{
     state = {
         maxTemp: undefined,
         minTemp: undefined,
@@ -112,10 +121,12 @@ class App extends React.Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
+        //weatherIcon: '',
         error: undefined
     }
 
-    getWeather = async function(e) {
+    getWeather = async function (e)
+    {
         e.preventDefault();
         const city = e.target.elements.city.value;
         const country = e.target.elements.country.value;
@@ -124,8 +135,23 @@ class App extends React.Component {
         const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=${unit}`);
         const data = await api_call.json();
 
-        if (city && country) {
+       // let weatherId = data.data.weather[0].id;
+
+        if (city && country)
+        {
             console.log(data);
+
+            //if (weatherId <= 232) {
+            //    this.setState({ weatherIcon: ThunderStormIcon })
+            //} else if (weatherId >= 300 && weatherId <= 531) {
+            //    this.setState({ weatherIcon: RainIcon });
+            //} else if (weatherId >= 600 && weatherId <= 622) {
+            //    this.setState({ weatherIcon: SnowIcon });
+            //} else if (weatherId === 800) {
+            //    this.setState({ weatherIcon: ClearIcon });
+            //} else if (weatherId >= 801 && weatherId <= 804) {
+            //    this.setState({ weatherIcon: CloudsIcon });
+            //}
 
             this.setState({
                 maxTemp: data.main.temp_max,
@@ -147,6 +173,7 @@ class App extends React.Component {
                 country: undefined,
                 humidity: undefined,
                 description: undefined,
+              //  weatherIcon: '',
                 error: "Please enter values into both fields"
             });
         }
@@ -173,6 +200,7 @@ class App extends React.Component {
                                         country={this.state.country}
                                         humidity={this.state.humidity}
                                         description={this.state.description}
+                                       // weatherIcon={this.state.weatherIcon}
                                         error={this.state.error} />
                                 </div>
                             </div>

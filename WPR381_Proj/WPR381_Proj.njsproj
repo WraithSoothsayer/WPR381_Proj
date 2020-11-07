@@ -45,6 +45,12 @@
     <Content Include="tsconfig.json">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="weather icons\01W.svg" />
+    <Content Include="weather icons\02W.svg" />
+    <Content Include="weather icons\03W.svg" />
+    <Content Include="weather icons\04W-DAY.svg" />
+    <Content Include="weather icons\04W-NIGHT.svg" />
+    <Content Include="weather icons\05W.svg" />
     <Content Include="WeatherAPI.js">
       <SubType>Code</SubType>
     </Content>
@@ -59,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\" />
+    <Folder Include="weather icons\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
