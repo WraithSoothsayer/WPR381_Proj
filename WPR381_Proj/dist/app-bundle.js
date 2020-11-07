@@ -113,10 +113,30 @@ class Title extends React.Component {
     }
 }
 ;
+let unit = "";
+let sign = "";
+//if (unit == "Metric") {
+//    sign = "C";
+//}
+//else {
+//    sign = "F";
+//}
 //Weather
 class Weather extends React.Component {
     render() {
         return (React.createElement("div", { className: "weather__info" },
+            this.props.maxTemp && React.createElement("p", { className: "weather__key" },
+                " Max temperature:",
+                React.createElement("span", { className: "weather__value" },
+                    " ",
+                    this.props.maxTemp,
+                    "\u00B0")),
+            this.props.minTemp && React.createElement("p", { className: "weather__key" },
+                " Min temperature:",
+                React.createElement("span", { className: "weather__value" },
+                    " ",
+                    this.props.minTemp,
+                    "\u00B0")),
             this.props.city && this.props.country && React.createElement("p", { className: "weather__key" },
                 "Location:",
                 React.createElement("span", { className: "weather__value" },
@@ -128,7 +148,8 @@ class Weather extends React.Component {
                 " Temperature:",
                 React.createElement("span", { className: "weather__value" },
                     " ",
-                    this.props.temperature)),
+                    this.props.temperature,
+                    "\u00B0")),
             this.props.humidity && React.createElement("p", { className: "weather__key" },
                 " Humidity:",
                 React.createElement("span", { className: "weather__value" },
@@ -169,6 +190,8 @@ class App extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {
+            maxTemp: undefined,
+            minTemp: undefined,
             temperature: undefined,
             city: undefined,
             country: undefined,
@@ -181,12 +204,14 @@ class App extends React.Component {
                 e.preventDefault();
                 const city = e.target.elements.city.value;
                 const country = e.target.elements.country.value;
-                const unit = e.target.elements.unitType.value;
+                unit = e.target.elements.unitType.value;
                 const api_call = yield fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=${unit}`);
                 const data = yield api_call.json();
                 if (city && country) {
                     console.log(data);
                     this.setState({
+                        maxTemp: data.main.temp_max,
+                        minTemp: data.main.temp_min,
                         temperature: data.main.temp,
                         city: data.name,
                         country: data.sys.country,
@@ -197,6 +222,8 @@ class App extends React.Component {
                 }
                 else {
                     this.setState({
+                        maxTemp: undefined,
+                        minTemp: undefined,
                         temperature: undefined,
                         city: undefined,
                         country: undefined,
@@ -219,7 +246,7 @@ class App extends React.Component {
                                 React.createElement(Title, null)),
                             React.createElement("div", { className: "col-xs-7 form-container" },
                                 React.createElement(Form, { getWeather: this.getWeather.bind(this) }),
-                                React.createElement(Weather, { temperature: this.state.temperature, city: this.state.city, country: this.state.country, humidity: this.state.humidity, description: this.state.description, error: this.state.error }))))))));
+                                React.createElement(Weather, { maxTemp: this.state.maxTemp, minTemp: this.state.minTemp, temperature: this.state.temperature, city: this.state.city, country: this.state.country, humidity: this.state.humidity, description: this.state.description, error: this.state.error }))))))));
     }
 }
 ;

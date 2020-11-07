@@ -15,7 +15,7 @@ body {
 }
 
 .main {
-    height: 81vh;
+    height: 85vh;
     box-shadow: 0px 10px 20px #98caef;
     background-image: url("clouds.png");
     background-position: center;

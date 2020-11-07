@@ -17,11 +17,33 @@ class Title extends React.Component {
     }
 };
 
+let unit = "";
+let sign = "";
+
+//if (unit == "Metric") {
+//    sign = "C";
+//}
+//else {
+//    sign = "F";
+//}
+
 //Weather
 class Weather extends React.Component {
     render() {
         return (
-            <div className="weather__info">
+            <div className="weather__info">                
+                {
+                    this.props.maxTemp && <p className="weather__key"> Max temperature:
+                    <span className="weather__value"> {this.props.maxTemp}&deg;</span>
+                    </p>
+                }
+
+                {
+                    this.props.minTemp && <p className="weather__key"> Min temperature:
+                    <span className="weather__value"> {this.props.minTemp}&deg;</span>
+                    </p>
+                }
+
                 {
                     this.props.city && this.props.country && <p className="weather__key">Location:
                     <span className="weather__value"> {this.props.city}, {this.props.country}</span>
@@ -30,7 +52,7 @@ class Weather extends React.Component {
 
                 {
                     this.props.temperature && <p className="weather__key"> Temperature:
-                    <span className="weather__value"> {this.props.temperature}</span>
+                    <span className="weather__value"> {this.props.temperature}&deg;</span>
                     </p>
                 }
 
@@ -83,6 +105,8 @@ const API_KEY = '39a9c9e10d07c63dde01d21bbeca07c0';
 
 class App extends React.Component {
     state = {
+        maxTemp: undefined,
+        minTemp: undefined,
         temperature: undefined,
         city: undefined,
         country: undefined,
@@ -91,20 +115,21 @@ class App extends React.Component {
         error: undefined
     }
 
-
     getWeather = async function(e) {
         e.preventDefault();
         const city = e.target.elements.city.value;
         const country = e.target.elements.country.value;
-        const unit = e.target.elements.unitType.value;
+        unit = e.target.elements.unitType.value;
 
         const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=${unit}`);
         const data = await api_call.json();
-        
+
         if (city && country) {
             console.log(data);
 
             this.setState({
+                maxTemp: data.main.temp_max,
+                minTemp: data.main.temp_min,
                 temperature: data.main.temp,
                 city: data.name,
                 country: data.sys.country,
@@ -115,6 +140,8 @@ class App extends React.Component {
         }
         else {
             this.setState({
+                maxTemp: undefined,
+                minTemp: undefined,
                 temperature: undefined,
                 city: undefined,
                 country: undefined,
@@ -124,7 +151,6 @@ class App extends React.Component {
             });
         }
     }
-
 
     render() {
         return (
@@ -140,6 +166,8 @@ class App extends React.Component {
                                 <div className="col-xs-7 form-container">
                                     <Form getWeather={this.getWeather.bind(this)} />
                                     <Weather
+                                        maxTemp={this.state.maxTemp}
+                                        minTemp={this.state.minTemp}
                                         temperature={this.state.temperature}
                                         city={this.state.city}
                                         country={this.state.country}
