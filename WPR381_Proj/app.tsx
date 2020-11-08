@@ -11,8 +11,8 @@ class Title extends React.Component {
     render() {
         return (
             <div>
-                <h1 className="title-container__title">Weather Finder</h1>
-                <h3 className="title-container__subtitle">Find out temperature, conditions and more!</h3>
+                <h1 className="title-container__title">Web Weather</h1>
+                <h3 className="title-container__subtitle">Get your weather on the go!</h3>
             </div>
         );
     }
