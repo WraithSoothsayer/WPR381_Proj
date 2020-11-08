@@ -21,30 +21,32 @@ class Title extends React.Component {
 let unit = "";
 let sign = "";
 
-
-
-
 //let ThunderStormIcon = require( './weather icons/01W.svg');
 //let RainIcon = require( './weather icons/02W.svg');
 //let SnowIcon = require( './weather icons/03W.svg');
 //let ClearIcon = require( './weather icons/04W-DAY.svg');
 //let CloudsIcon = require( './weather icons/05W.svg');
 
-
 //Weather
 class Weather extends React.Component {
     render() {
+        if (unit == "metric") {
+            sign = "C";
+        }
+        else {
+            sign = "F";
+        }
         return (
             <div className="weather__info">                
                 {
                     this.props.maxTemp && <p className="weather__key"> Max temperature:
-                    <span className="weather__value"> {this.props.maxTemp}&deg;</span>
+                    <span className="weather__value"> {this.props.maxTemp}&deg;{sign}</span>
                     </p>
                 }
 
                 {
                     this.props.minTemp && <p className="weather__key"> Min temperature:
-                    <span className="weather__value"> {this.props.minTemp}&deg;</span>
+                    <span className="weather__value"> {this.props.minTemp}&deg;{sign}</span>
                     </p>
                 }
 
@@ -56,7 +58,7 @@ class Weather extends React.Component {
 
                 {
                     this.props.temperature && <p className="weather__key"> Temperature:
-                    <span className="weather__value"> {this.props.temperature}&deg;</span>
+                    <span className="weather__value"> {this.props.temperature}&deg;{sign}</span>
                     </p>
                 }
 

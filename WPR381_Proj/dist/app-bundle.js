@@ -109,8 +109,8 @@ var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/in
 class Title extends React.Component {
     render() {
         return (React.createElement("div", null,
-            React.createElement("h1", { className: "title-container__title" }, "Weather Finder"),
-            React.createElement("h3", { className: "title-container__subtitle" }, "Find out temperature, conditions and more!")));
+            React.createElement("h1", { className: "title-container__title" }, "Web Weather"),
+            React.createElement("h3", { className: "title-container__subtitle" }, "Get your weather on the go!")));
     }
 }
 ;
@@ -124,19 +124,27 @@ let sign = "";
 //Weather
 class Weather extends React.Component {
     render() {
+        if (unit == "metric") {
+            sign = "C";
+        }
+        else {
+            sign = "F";
+        }
         return (React.createElement("div", { className: "weather__info" },
             this.props.maxTemp && React.createElement("p", { className: "weather__key" },
                 " Max temperature:",
                 React.createElement("span", { className: "weather__value" },
                     " ",
                     this.props.maxTemp,
-                    "\u00B0")),
+                    "\u00B0",
+                    sign)),
             this.props.minTemp && React.createElement("p", { className: "weather__key" },
                 " Min temperature:",
                 React.createElement("span", { className: "weather__value" },
                     " ",
                     this.props.minTemp,
-                    "\u00B0")),
+                    "\u00B0",
+                    sign)),
             this.props.city && this.props.country && React.createElement("p", { className: "weather__key" },
                 "Location:",
                 React.createElement("span", { className: "weather__value" },
@@ -149,7 +157,8 @@ class Weather extends React.Component {
                 React.createElement("span", { className: "weather__value" },
                     " ",
                     this.props.temperature,
-                    "\u00B0")),
+                    "\u00B0",
+                    sign)),
             this.props.humidity && React.createElement("p", { className: "weather__key" },
                 " Humidity:",
                 React.createElement("span", { className: "weather__value" },
