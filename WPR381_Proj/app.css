@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:100,200,300,300i,400,400i,700');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 
 body {
@@ -66,16 +65,8 @@ input[type="text"] {
     margin-bottom: 30px;
     margin-right: 20px;
     font-size: 20px;
-}
-
-input[type="text"] {
     outline: none;
 }
-
-/*input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #2c3e50 inset;
-    -webkit-text-fill-color: #fff !important;
-}*/
 
 button {
     border: 0;
@@ -90,10 +81,6 @@ button {
     color: #fff;
     font-weight: 100;
 }
-
-/*#metric{
-    height: 100%;
-}*/
 
 #metric {
     background-color: transparent;
